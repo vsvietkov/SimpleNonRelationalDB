@@ -6,3 +6,4 @@
 4. `make generate-key`
 5. `make start`
 6. `make migrate`
+7. `make seed`

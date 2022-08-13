@@ -1,0 +1,16 @@
+{
+    "data": [
+        {
+            "description": "Oh no! A trolley is heading towards 5 people. You can pull the lever to divert it to the other track, killing 1 person instead. What do you do?",
+            "image": "/problem1.jpg"
+        },
+        {
+            "description": "Oh no! A trolley is heading towards 5 people. You can pull the lever to divert it to the other track, killing 4 people instead. What do you do?",
+            "image": "/problem2.png"
+        },
+        {
+            "description": "Oh no! A trolley is heading towards 5 people. You can pull the lever to divert it to the other track, but then your life savings will be destroyed. What do you do?",
+            "image": "/problem3.png"
+        }
+    ]
+}

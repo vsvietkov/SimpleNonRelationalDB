@@ -10,6 +10,6 @@ class Problem extends Eloquent
     protected $collection = 'problems';
 
     protected $fillable = [
-        'description', 'firstAnswer_id','secondAnswer_id'
+        'description', 'image'
     ];
 }

@@ -45,6 +45,8 @@ stop:
 	@$(DOCKER_COMPOSE) -p $(APP) down
 endif
 
+restart: stop start
+
 install:
 	@$(DOCKER_RUN) $(APP) sh -c "composer install"
 update:
@@ -55,5 +57,5 @@ generate-key:
 
 migrate:
 	@docker exec $(APP) php artisan migrate
-
-restart: stop start
+seed:
+	@docker exec $(APP) php artisan db:seed

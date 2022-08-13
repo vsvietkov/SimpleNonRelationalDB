@@ -13,8 +13,6 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $collection) {
-            $collection->unique('problem_id', 'problem_id');
-        });
+        Schema::create('answers', function (Blueprint $collection) {});
     }
 };
