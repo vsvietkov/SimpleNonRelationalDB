@@ -12,4 +12,12 @@ class Answer extends Eloquent
     protected $fillable = [
         'description', 'problem_id'
     ];
+
+    /**
+     * @return Problem|null
+     */
+    public function problem(): ?Problem
+    {
+        return Problem::find($this['problem_id'] ?? '');
+    }
 }
