@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+    app:
+        image: simple-non-relational-project
+        container_name: simple-non-relational-project
+        command: php artisan serve --host 0.0.0.0
+        build:
+            args:
+                - XDEBUG_INSTALL=${XDEBUG_INSTALL}
+            context: ${CURRENT_DIR}
+            dockerfile: ${CURRENT_DIR}/Dockerfile
+        restart: unless-stopped
+        links:
+            - mongo
+        ports:
+            - "8000:8000"
+        volumes:
+            - ${CURRENT_DIR}:${WORKDIR}
+        networks:
+            - network-bridge
+    mongo:
+        image: mongo
+        container_name: mongo
+        restart: unless-stopped
+        environment:
+            MONGO_INITDB_DATABASE: ${DB_DATABASE}
+            MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+            MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+        volumes:
+            - ${CURRENT_DIR}/.docker/mongo:/data/db
+        ports:
+            - "27017-27019:27017-27019"
+        networks:
+            - network-bridge
+
+networks:
+    network-bridge:
+        driver: bridge
