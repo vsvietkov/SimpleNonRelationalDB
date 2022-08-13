@@ -55,7 +55,5 @@ generate-key:
 
 migrate:
 	@docker exec $(APP) php artisan migrate
-rollback:
-	@docker exec $(APP) php artisan migrate:rollback --step=1
 
 restart: stop start
