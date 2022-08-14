@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Jenssegers\Mongodb\Relations\HasMany;
 
 class Problem extends Eloquent
 {
@@ -15,9 +15,9 @@ class Problem extends Eloquent
     ];
 
     /**
-     * @return HasMany|\Jenssegers\Mongodb\Relations\HasMany
+     * @return HasMany
      */
-    public function answers(): HasMany|\Jenssegers\Mongodb\Relations\HasMany
+    public function answers(): HasMany
     {
         return $this->hasMany(Answer::class);
     }

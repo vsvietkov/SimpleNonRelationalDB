@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Jenssegers\Mongodb\Relations\BelongsTo;
 
 class Answer extends Eloquent
 {
@@ -15,9 +15,9 @@ class Answer extends Eloquent
     ];
 
     /**
-     * @return BelongsTo|\Jenssegers\Mongodb\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function problem(): BelongsTo|\Jenssegers\Mongodb\Relations\BelongsTo
+    public function problem(): BelongsTo
     {
         return $this->belongsTo(Problem::class);
     }
