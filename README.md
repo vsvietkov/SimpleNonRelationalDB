@@ -6,11 +6,11 @@ The idea was taken from https://neal.fun/absurd-trolley-problems/.
 
 You will be asked to answer on 3 trolley problems
 
-!(image1)[storage/githubMedia/image1.png?raw=true]
+![image1](storage/githubMedia/image1.png?raw=true)
 
 After the answer, you will the percentage of people that chose the same answer
 
-!(image2)[storage/githubMedia/image2.png?raw=true]
+![image2](storage/githubMedia/image2.png?raw=true)
 
 ## Installation
 
