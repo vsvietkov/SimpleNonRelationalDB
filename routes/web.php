@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Answer;
+use App\Models\Problem;
+use App\Models\Statistic;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,15 +25,21 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
         $request->session()->put('problemId', 0);
     }
     $problemId = $request->session()->get('problemId');
+    $statistic = null;
 
     if ($request->has('answer')) {
+        $statistic = Answer::find($request->get('answer'))->getStatisticPercentage();
+        Statistic::where('answer_id', $request->get('answer'))->increment('count');
+    }
+
+    if ($request->has('continue')) {
         $request->session()->put('problemId', ++$problemId);
     }
 
     if ($problemId > 2) {
         return view('game-end');
     }
-    $problem = \App\Models\Problem::all()[$request->session()->get('problemId')];
+    $problem = Problem::all()[$request->session()->get('problemId')];
     $answers = $problem->answers()->get();
-    return view('index', compact('problem', 'answers'));
+    return view('index', compact('problem', 'answers', 'statistic'));
 });
