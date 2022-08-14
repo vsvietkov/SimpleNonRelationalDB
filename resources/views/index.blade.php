@@ -28,11 +28,15 @@
             margin: auto;
             width: 600px;
         }
+        p {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <form class="container">
         <img src="{{ $problem['image'] }}" alt="problem"/>
+        <p>{{ $problem['description'] }}</p>
         <?php if (is_null($statistic)) {?>
             <div class="buttons">
                 <button type="submit" name="answer" value="{{ $answers[0]['_id'] }}">{{ $answers[0]['description'] }}</button>
