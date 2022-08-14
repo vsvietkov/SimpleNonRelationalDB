@@ -6,8 +6,6 @@ services:
         container_name: simple-non-relational-project
         command: php artisan serve --host 0.0.0.0
         build:
-            args:
-                - XDEBUG_INSTALL=${XDEBUG_INSTALL}
             context: ${CURRENT_DIR}
             dockerfile: ${CURRENT_DIR}/Dockerfile
         restart: unless-stopped

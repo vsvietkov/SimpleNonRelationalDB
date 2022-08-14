@@ -2,15 +2,15 @@ ifeq (${OS},Windows_NT)
 .ONESHELL:
 endif
 
-APP       := simple-non-relational-project
-WORKDIR   := /app
+APP     := simple-non-relational-project
+WORKDIR := /app
 
 ifeq (${OS},Windows_NT)
-CURRENT_DIR                := ${CURDIR}
-DOCKER_COMPOSE             := docker-compose
+CURRENT_DIR    := ${CURDIR}
+DOCKER_COMPOSE := docker-compose
 else
-CURRENT_DIR                := ${PWD}
-DOCKER_COMPOSE             := WORKDIR=$(WORKDIR) CURRENT_DIR=$(CURRENT_DIR) docker-compose
+CURRENT_DIR    := ${PWD}
+DOCKER_COMPOSE := WORKDIR=$(WORKDIR) CURRENT_DIR=$(CURRENT_DIR) docker-compose
 endif
 
 DOCKER_RUN := docker run --rm -v ${CURRENT_DIR}:$(WORKDIR) --workdir=$(WORKDIR)
@@ -19,12 +19,10 @@ ifeq (${OS},Windows_NT)
 docker-build:
 	@set WORKDIR=$(WORKDIR)
 	@set CURRENT_DIR=$(CURRENT_DIR)
-	@set XDEBUG_INSTALL=0
 	@$(DOCKER_COMPOSE) build app
 docker-build-dev:
 	@set WORKDIR=$(WORKDIR)
 	@set CURRENT_DIR=$(CURRENT_DIR)
-	@set XDEBUG_INSTALL=1
 	@$(DOCKER_COMPOSE) build app
 start:
 	@set WORKDIR=$(WORKDIR)
@@ -36,9 +34,9 @@ stop:
 	@$(DOCKER_COMPOSE) -p $(APP) down
 else
 docker-build:
-	@XDEBUG_INSTALL=0 $(DOCKER_COMPOSE) build app
+	@$(DOCKER_COMPOSE) build app
 docker-build-dev:
-	@XDEBUG_INSTALL=1 $(DOCKER_COMPOSE) build app
+	@$(DOCKER_COMPOSE) build app
 start:
 	@$(DOCKER_COMPOSE) -p $(APP) up -d
 stop:

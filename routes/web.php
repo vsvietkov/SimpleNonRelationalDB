@@ -3,6 +3,7 @@
 use App\Models\Answer;
 use App\Models\Problem;
 use App\Models\Statistic;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (\Illuminate\Http\Request $request) {
+Route::get('/', function (Request $request) {
     if ($request->has('restart')) {
         $request->session()->flush();
     }
@@ -41,5 +42,6 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
     }
     $problem = Problem::all()[$request->session()->get('problemId')];
     $answers = $problem->answers()->get();
+
     return view('index', compact('problem', 'answers', 'statistic'));
 });
