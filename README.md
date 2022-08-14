@@ -12,6 +12,26 @@ After the answer, you will the percentage of people that chose the same answer
 
 ![image2](storage/githubMedia/image2.png?raw=true)
 
+## Database structure
+
+There are 3 collections: Problems, Answers and Statistics
+
+![collections](storage/githubMedia/collections.png?raw=true)
+
+Problem documents contain just the problem description and path to the image
+
+![problemDocument](storage/githubMedia/problemDocument.png?raw=true)
+
+Answers contain the description of the answer and an id of a problem it is attached to in order to provide the
+One-to-Many relationship.
+
+![answerDocument](storage/githubMedia/answerDocument.png?raw=true)
+
+Statistics have an amount of people who chose this answer and answer id in order to provide
+One-to-One relationship.
+
+![statisticDocument](storage/githubMedia/statisticDocument.png?raw=true)
+
 ## Installation
 
 1. `cp .env.example .env`
