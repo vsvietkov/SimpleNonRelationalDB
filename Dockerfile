@@ -4,7 +4,7 @@ FROM php:8.0-cli
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN apt-get update && \
-    apt-get install -y autoconf pkg-config libssl-dev && \
+    apt-get install -y autoconf pkg-config libssl-dev zip unzip && \
     pecl install mongodb && docker-php-ext-enable mongodb
 
 WORKDIR /app
