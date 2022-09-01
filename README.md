@@ -42,6 +42,9 @@ One-to-One relationship.
 6. `make migrate`
 7. `make seed`
 
+To log in to the database, use username/password authentication with SHA-256 (root, Securepass1!)
+mongodb://localhost:27017
+
 If your Windows does not set WORKDIR and CURRENT_DIR variables by itself during the execution of makefile commands,
 add next to your `.env` file:
 
