@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Answer;
+use App\Models\Problem;
+use App\Models\Statistic;
+use Faker\Generator;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +17,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $testData = json_decode(file_get_contents(__DIR__ . '/../../tests/testData.json'), true);
+        $faker    = new Generator();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        foreach ($testData['data'] as $data) {
+            $problem = Problem::create($data);
+
+            $answer  = Answer::create(['description' => 'Pull the level', 'problem_id' => $problem['id']]);
+            Statistic::create(['answer_id' => $answer['id'], 'count' => $faker->randomNumber(3)]);
+
+            $answer  = Answer::create(['description' => 'Do nothing', 'problem_id' => $problem['id']]);
+            Statistic::create(['answer_id' => $answer['id'], 'count' => $faker->randomNumber(3)]);
+        }
     }
 }
